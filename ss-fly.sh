@@ -332,14 +332,24 @@ download_files() {
 generate_config() {
     cat > /etc/shadowsocks.json<<-EOF
 {
-    "server":"0.0.0.0",
-    "server_port":$2,
-    "local_address":"127.0.0.1",
-    "local_port":1080,
-    "password":"$1",
-    "timeout":300,
-    "method":"aes-256-cfb",
-    "fast_open":false
+        "server":"0.0.0.0",
+        "local_address": "127.0.0.1",
+        "local_port":1080,
+        "port_password": {
+                "8388": "whasvpnd0428",
+                "8382": "luoyu123456",
+                "8389": "jiayin123456",
+ 		            "8390": "miao123456",
+                "8550": "miao123456",
+                "8551": "miao123456",
+                "8552": "miao123456",
+                "8553": "miao123456",
+                "8554": "miao123456",
+                "8555": "miao123456",
+                "8556": "miao123456"
+        },                                                                              "timeout":300,
+                "method":"aes-256-cfb",
+        "fast_open": false
 }
 EOF
 }
@@ -445,8 +455,6 @@ install() {
         fi      
         echo -e "[${green}成功${plain}] 安装成功尽情冲浪！"
         echo -e "你的服务器地址（IP）：\033[41;37m $(get_ip) \033[0m"
-        echo -e "你的密码            ：\033[41;37m ${password} \033[0m"
-        echo -e "你的端口            ：\033[41;37m ${port} \033[0m"
         echo -e "你的加密方式        ：\033[41;37m aes-256-cfb \033[0m"
         echo -e "欢迎访问flyzy小站   ：\033[41;37m https://www.flyzy2005.com \033[0m"
         get_ss_link
